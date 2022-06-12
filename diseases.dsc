@@ -95,12 +95,12 @@ diseases:
                 #Will the disease be cured on player disconnect?
                 disconnect: false
             #Uses effects from https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
-            #Formatting: <effect>:<duration>:<amplifier>:<chance>
+            #Formatting: <effect>: <duration> <amplifier> <chance>
             #Example: slow: 1:1:0.5
             effects:
                 #Effects that will be applied to the player when the disease is contracted.
                 contraction_effects:
-                    poison: 0:0:0.0
+                    poison: 0 0 0.0
                 #Effects that will be removed the player when the disease is cured.
                 #Formatting: - effect
                 cure_effects:
@@ -108,7 +108,7 @@ diseases:
                 #Effects that have a chance to be applied each second.
                 #Use the same format as contraction_effects.
                 random_effects:
-                    slow: 0:0:0.0
+                    poison: 10 1 0.5
                 #Effects that will be applied to the player whenever they transmit the disease.
                 #Use the same format as contraction_effects.
                 transmit_effects:

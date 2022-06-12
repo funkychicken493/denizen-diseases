@@ -8,6 +8,24 @@ diseases_core:
         after server start:
             - flag server diseases:<map[<script[diseases].data_key[diseases]>]>
             - announce to_console "Diseases successfully loaded."
+        after delta time secondly:
+            - foreach <server.online_players> as:p:
+                - if <[p].flag[diseases].if_null[<map[]>].is_empty>:
+                    - foreach next
+                - foreach <[p].flag[diseases].keys> as:disease:
+                    - define disease_map <script[diseases].data_key[diseases].get[<[disease]>]>
+                    - if <util.time_now.is_after[<[p].flag[diseases.<[disease]>]>].if_null[false]>:
+                        - flag <[p]> diseases.<[disease]>:!
+                        - foreach next
+                    - define random_effects <[disease_map].deep_get[effects.random_effects]>
+                    - foreach <[random_effects].keys> as:effect:
+                        - define split_effect <[random_effects].get[<[effect]>].split>
+                        - define duration <duration[<[split_effect].get[1]>s]>
+                        - define amplifier <[split_effect].get[2].sub[1]>
+                        - define chance <[split_effect].get[3].mul[100]>
+                        - if <util.random_chance[<[chance]>]>:
+                            - cast <[effect]> <[p]> amplifier:<[amplifier]> duration:<[duration]> hide_particles no_ambient
+
 
 disease_cure_methods:
     type: world
