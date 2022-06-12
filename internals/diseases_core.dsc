@@ -66,7 +66,7 @@ force_cure_disease:
     script:
         - if <[player].has_flag[diseases].not>:
             - stop
-        - if <[player].flag[diseases].get[<[disease]>].exists>:
+        - if <[player].flag[diseases.<[disease]>].exists>:
             - flag <[player]> diseases.<[disease]>:!
             - narrate "Cured of <[disease]>" targets:<[player]>
 

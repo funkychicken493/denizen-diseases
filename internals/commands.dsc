@@ -69,4 +69,4 @@ cure_command:
             - stop
         - define disease <context.args.get[2]>
         - narrate "<green>Cured <[player].name> from <[disease]>!"
-        - run force_cure_player def:<[player]>|<[disease]>
+        - run force_cure_disease def:<[player]>|<[disease]>
