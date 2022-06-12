@@ -18,6 +18,8 @@ antibiotics_use:
             - determine passively cancelled
             - narrate "You feel better"
             - take item:antibiotics quantity:1 from:<player.inventory>
+            - foreach <player.flag[diseases].if_null[<map[]>].keys> as:disease:
+                - run natural_cure_disease def:<player>|<[disease]>|antibiotics
             - inject <script[disease_sounds]> path:swallow
 
 panacea:
@@ -36,6 +38,9 @@ panacea_use:
         on player right clicks block with:panacea:
             - determine passively cancelled
             - narrate "You feel much better"
+            - take item:panacea quantity:1 from:<player.inventory>
+            - foreach <player.flag[diseases].if_null[<map[]>].keys> as:disease:
+                - run natural_cure_disease def:<player>|<[disease]>|panacea
             - inject <script[disease_sounds]> path:swallow
 
 hand_sanitizer:
@@ -61,6 +66,21 @@ hand_sanitizer_use:
             - flag <player> sanitized_hands expire:<duration[<util.random.int[12000].to[36000]>t]>
             - inject <script[disease_sounds]> path:sanitization
 
+hand_sanitizer_use_on_player:
+    type: world
+    debug: true
+    events:
+        on player damages player with:hand_sanitizer:
+            - determine passively cancelled
+            - if <context.entity.has_flag[sanitized_hands]>:
+                - narrate "Their hands are already sanitized." targets:<context.damager>
+                - inject <script[disease_sounds]> path:error
+                - stop
+            - narrate "Your hands have been sanitized!" targets:<context.entity>
+            - narrate "<context.entity.name>'s hands have been sanitized!" targets:<context.damager>
+            - flag <context.entity> sanitized_hands expire:<duration[<util.random.int[12000].to[36000]>t]>
+            - inject <script[disease_sounds]> path:sanitization
+
 sugar_pills:
     type: item
     material: player_head
@@ -82,5 +102,5 @@ sugar_pills_use:
             - narrate "You feel better"
             - take item:sugar_pills quantity:1 from:<player.inventory>
             - foreach <player.flag[diseases].if_null[<map[]>].keys> as:disease:
-                - run def:<player>|<[disease]>|placebo
+                - run natural_cure_disease def:<player>|<[disease]>|placebo
             - inject <script[disease_sounds]> path:swallow
