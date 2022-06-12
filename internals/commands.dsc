@@ -36,7 +36,7 @@ infect_command:
         - narrate "<green>Infected <[player].name> with <[disease]> for <[duration].formatted_words>!"
         - run force_infect_player def:<[player]>|<[disease]>|<[duration]>
 
-cure_commands:
+cure_command:
     type: command
     name: cure
     description: Cures someone from a disease.
@@ -61,6 +61,10 @@ cure_commands:
             - stop
         - else if <context.args.get[2]> not in <server.flag[diseases].keys>:
             - narrate "<red>The disease <context.args.get[2]> doesn't exist!"
+            - narrate "<red>Usage: <script[cure_command].data_key[usage]>"
+            - stop
+        - else if <context.args.get[2]> not in <[player].flag[diseases].if_null[<map[]>].keys>:
+            - narrate "<red>The player <[player].name> doesn't have the disease <context.args.get[2]>!"
             - narrate "<red>Usage: <script[cure_command].data_key[usage]>"
             - stop
         - define disease <context.args.get[2]>
