@@ -108,11 +108,13 @@ diseases:
                 #Effects that have a chance to be applied each second.
                 #Use the same format as contraction_effects.
                 random_effects:
-                    poison: 10 1 0.5
+                    poison: 10 1 0.01
+                    weakness: 10 3 0.03
+                    slow: 10 2 0.03
                 #Effects that will be applied to the player whenever they transmit the disease.
                 #Use the same format as contraction_effects.
                 transmit_effects:
-                    slow: 0:0:0.0
+                    slow: 0 0 0.0
                 #Effects that cannot be gained by the player while infected.
                 #Uses the same format as cure_effects.
                 prevent_effects:
@@ -120,7 +122,7 @@ diseases:
                 #Effects that will be applied to the player whenever they are hit.
                 #Use the same format as contraction_effects.
                 hit_effects:
-                    slow: 0:0:0.0
+                    slow: 0 0 0.0
 
 
 
