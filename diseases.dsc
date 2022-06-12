@@ -81,6 +81,8 @@ diseases:
                 #Chance for the infection to be cured by antibiotics.
                 #This chance is multiplied by the antibiotics effectiveness.
                 antibiotics: 0.1
+                #Chance for the infection to be cured by placebo sugar pills, which are a lot more specialized than antibiotics.
+                placebo: 0.0
                 #Chance for the infection to be cured by direct fire damage.
                 fire: 0.0
                 #Chance per second for the infection to be cured by being submerged in water.
