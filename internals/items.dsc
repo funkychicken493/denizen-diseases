@@ -100,7 +100,19 @@ sugar_pills_use:
         on player right clicks block with:sugar_pills:
             - determine passively cancelled
             - narrate "You feel better"
-            - take item:sugar_pills quantity:1 from:<player.inventory>
+            - if <context.item.flag[uses].if_null[0]> == 0:
+                - take item:<context.item> quantity:1 from:<player.inventory>
+            - else:
+                - inventory flag uses:<context.item.flag[uses].sub[1]> d:<player.inventory>
             - foreach <player.flag[diseases].if_null[<map[]>].keys> as:disease:
                 - run natural_cure_disease def:<player>|<[disease]>|placebo
             - inject <script[disease_sounds]> path:swallow
+
+mask:
+    type: item
+    material: player_head
+    display name: <white>Mask
+    mechanisms:
+        skull_skin: 04fae65f-6801-4685-b176-50ea973bc97f|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWM2ZjcxZDFkNjc3NTgyYjU2Y2YxMjc3YzE0M2Y5ODYzZTgyMjJmMmM5ZTFhYmEyMmFmMGYwZDhjMGQyM2Y2MyJ9fX0=
+    flags:
+        no_stack: <util.random_uuid>

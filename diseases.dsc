@@ -23,8 +23,8 @@ diseases:
                 chronic: false
                 #Will the disease time continue to tick down if the player is offline?
                 offline_tick: false
-                #Amount the disease time will increase after the host dies using dsc <duration[]> tag.
-                death_penalty: 0s
+                #Amount the disease time will increase after the host dies.
+                death_penalty: 0
             spread:
                 player:
                     enabled: true
@@ -96,7 +96,7 @@ diseases:
                 disconnect: false
             #Uses effects from https://hub.spigotmc.org/javadocs/spigot/org/bukkit/potion/PotionEffectType.html
             #Formatting: <effect>: <duration> <amplifier> <chance>
-            #Example: slow: 1:1:0.5
+            #Example: slow: 1 1 0.5
             effects:
                 #Effects that will be applied to the player when the disease is contracted.
                 contraction_effects:
@@ -142,8 +142,8 @@ diseases:
                 chronic: false
                 #Will the disease time continue to tick down if the player is offline?
                 offline_tick: false
-                #Amount the disease time will increase after the host dies using dsc <duration[]> tag.
-                death_penalty: 0s
+                #Amount the disease time will increase after the host.
+                death_penalty: 0
             spread:
                 player:
                     enabled: true

@@ -13,6 +13,9 @@ get_duration:
     definitions: disease
     debug: false
     script:
+        - define disease_map <server.flag[diseases].get[<[disease]>]>
+        - if <[disease_map].deep_get[time.chronic].if_null[false]>:
+            - determine forever
         - determine <duration[<util.random.int[<duration[<server.flag[diseases].deep_get[<[disease]>.time.min_duration]>].in_ticks>].to[<duration[<server.flag[diseases].deep_get[<[disease]>.time.max_duration]>].in_ticks>]>t]>
 
 factor_natural_infect_chance:
