@@ -116,3 +116,10 @@ mask:
         skull_skin: 04fae65f-6801-4685-b176-50ea973bc97f|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZWM2ZjcxZDFkNjc3NTgyYjU2Y2YxMjc3YzE0M2Y5ODYzZTgyMjJmMmM5ZTFhYmEyMmFmMGYwZDhjMGQyM2Y2MyJ9fX0=
     flags:
         no_stack: <util.random_uuid>
+
+mask_use:
+    type: world
+    debug: true
+    events:
+        on player right clicks block with:mask:
+            - determine cancelled
